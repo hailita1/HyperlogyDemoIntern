@@ -1,0 +1,81 @@
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">{{nameList}}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="formGroup" (ngSubmit)="handling()">
+      <div class="form-group">
+        <label for="maNhanVien">Mã Nhân Viên</label>
+        <input type="text" name="" class="form-control" formControlName="id" id="maNhanVien">
+        <div *ngIf="submitted && formGroup.controls['id'].errors?.required">
+          <div *ngIf="formGroup.controls['id'].errors?.required" style="color: red"> * Mã Nhân Viên không được để
+            trống
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Tên Nhân Viên</label>
+        <input type="text" name="" class="form-control" formControlName="name" id="tenNhanVien">
+        <div *ngIf="submitted && formGroup.controls['name'].errors?.required">
+          <div *ngIf="formGroup.controls['name'].errors?.required" style="color: red"> * Tên Nhân Viên không được để
+            trống
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Ngày tháng năm sinh</label>
+        <input type="date" name="" class="form-control" formControlName="dateOfBirth" id="dateOfBirth">
+        <div
+          *ngIf="submitted && formGroup.controls['dateOfBirth'].errors?.required || formGroup.controls['dateOfBirth'].errors?.pattern">
+          <div *ngIf="formGroup.controls['dateOfBirth'].errors?.required" style="color: red"> * Ngày tháng năm sinh
+            không
+            được để trống
+          </div>
+          <div *ngIf="formGroup.controls['dateOfBirth'].errors?.pattern" style="color: red"> * Bạn chưa nhập đúng định
+            dạng
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Số điện thoại</label>
+        <input type="text" name="" class="form-control" formControlName="telephoneNumber" id="telephoneNumber">
+        <div
+          *ngIf="submitted && formGroup.controls['telephoneNumber'].errors?.required || formGroup.controls['telephoneNumber'].errors?.pattern">
+          <div *ngIf="formGroup.controls['telephoneNumber'].errors?.required" style="color: red"> * Số điện thoại không
+            được để trống
+          </div>
+          <div *ngIf="formGroup.controls['telephoneNumber'].errors?.pattern" style="color: red"> * Nhập đúng định dạng
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="text" name="" class="form-control" formControlName="email" id="email">
+        <div
+          *ngIf="submitted && formGroup.controls['email'].errors?.required || formGroup.controls['email'].errors?.pattern ">
+          <div *ngIf="formGroup.controls['email'].errors?.required" style="color: red"> * Email không được để trống
+          </div>
+          <div *ngIf="formGroup.controls['email'].errors?.pattern" style="color: red"> * Nhập đúng định dạng Email</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Địa chỉ</label>
+        <input type="text" name="diaChi" class="form-control" formControlName="address" placeholder=""
+               aria-describedby="helpId">
+        <div *ngIf="submitted && formGroup.controls['address'].errors?.required">
+          <div *ngIf="formGroup.controls['address'].errors?.required" style="color: red"> * Địa chỉ không được để trống
+          </div>
+        </div>
+      </div>
+      <div class="form-group" align="center">
+        <button [hidden]="checkButton" type="submit" class="btn btn-success"
+                style="width: 100px">{{nameButton}}</button> &nbsp; &nbsp;
+        <button class="btn btn-danger" style="width: 100px" (click)="modal.dismiss('Cross click')">Thoát</button>
+      </div>
+    </form>
+  </div>
+
+</ng-template>
