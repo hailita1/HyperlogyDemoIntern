@@ -190,8 +190,8 @@ export class EmployeeItemComponent implements OnInit {
       telephoneNumber: this.formGroup.get('telephoneNumber')?.value,
       dateOfBirth: this.formGroup.get('dateOfBirth')?.value,
     };
-    for (let i = 0; i < this.arrCheck.length; i++) {
-      if (this.arrCheck[i].id === employee.id) {
+    for (let i = 0; i < this.listEmployee.length; i++) {
+      if (this.listEmployee[i].id === employee.id) {
         this.listEmployee[i].name = employee.name;
         this.listEmployee[i].email = employee.email;
         this.listEmployee[i].address = employee.address;
